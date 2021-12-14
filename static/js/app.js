@@ -66,12 +66,10 @@ function filterTable(obj) {
   
     // 9. Use a forEach Loop through all of the filters and keep any data that
     // matches the filter values - work with Justin on this
-    
+    if(Object.entries(obj).length === 0)
+      filteredData = null;
     Object.entries(obj).forEach(([fkey, fval]) =>{
-        
-      filteredData = filteredData.filter((row) => row[fkey].toLowerCase().includes(fval.toLowerCase()))
-          
-
+      filteredData = filteredData.filter((row) => row[fkey].toLowerCase().includes(fval.toLowerCase()));
   });
   
     // 10. Finally, rebuild the table using the filtered data
@@ -82,4 +80,4 @@ function filterTable(obj) {
   d3.selectAll("input").on("change",updateFilters);
   
   // Build the table when the page loads
-  buildTable(tableData);
+  // buildTable(tableData);
